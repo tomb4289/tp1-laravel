@@ -92,7 +92,6 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         try {
-            // Store student information for logging
             $studentInfo = [
                 'id' => $student->id,
                 'name' => $student->name,
@@ -100,17 +99,14 @@ class StudentController extends Controller
                 'city' => $student->city->name
             ];
 
-            // Delete the student
             $student->delete();
 
-            // Log the deletion
             Log::info('Student deleted successfully', $studentInfo);
 
             return redirect()->route('students.index')
                 ->with('success', "Student '{$studentInfo['name']}' has been deleted successfully.");
                 
         } catch (\Exception $e) {
-            // Log the error
             Log::error('Failed to delete student', [
                 'student_id' => $student->id,
                 'error' => $e->getMessage()

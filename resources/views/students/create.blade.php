@@ -367,7 +367,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Phone number formatting
     const phoneInput = document.getElementById('phone_number');
     phoneInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
@@ -379,7 +378,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.target.value = value;
     });
 
-    // Age calculation and validation
     const dobInput = document.getElementById('date_of_birth');
     dobInput.addEventListener('change', function() {
         const dob = new Date(this.value);
@@ -398,12 +396,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Preview functionality
     const previewBtn = document.getElementById('previewBtn');
     const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
     
     previewBtn.addEventListener('click', function() {
-        // Get form values
         const name = document.getElementById('name').value || 'Student Name';
         const email = document.getElementById('email').value || '-';
         const phone = document.getElementById('phone_number').value || '-';
@@ -412,7 +408,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const citySelect = document.getElementById('city_id');
         const city = citySelect.options[citySelect.selectedIndex].text || '-';
         
-        // Calculate age
         let age = '-';
         if (dob) {
             const birthDate = new Date(dob);
@@ -425,7 +420,6 @@ document.addEventListener('DOMContentLoaded', function() {
             age += ' years old';
         }
         
-        // Update preview
         document.getElementById('previewInitial').textContent = name.charAt(0).toUpperCase();
         document.getElementById('previewName').textContent = name;
         document.getElementById('previewEmail').textContent = email;
@@ -435,11 +429,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('previewAddress').textContent = address;
         document.getElementById('previewCity').textContent = city;
         
-        // Show modal
         previewModal.show();
     });
 
-    // Form validation
     const form = document.querySelector('.needs-validation');
     form.addEventListener('submit', function(event) {
         if (!form.checkValidity()) {
@@ -449,7 +441,6 @@ document.addEventListener('DOMContentLoaded', function() {
         form.classList.add('was-validated');
     });
 
-    // Real-time validation feedback
     const inputs = form.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
         input.addEventListener('blur', function() {

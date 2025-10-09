@@ -383,7 +383,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Add click tracking for contact actions
     const contactButtons = document.querySelectorAll('[data-bs-target="#contactModal"], [data-bs-target="#emailModal"]');
     contactButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -391,7 +390,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add confirmation for delete action
     const deleteButton = document.querySelector('button[type="submit"]');
     if (deleteButton) {
         deleteButton.addEventListener('click', function(e) {

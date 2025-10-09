@@ -308,7 +308,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Select All functionality
     const selectAllCheckbox = document.getElementById('selectAll');
     const studentCheckboxes = document.querySelectorAll('.student-checkbox');
     
@@ -318,7 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Individual checkbox change
     studentCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             const checkedCount = document.querySelectorAll('.student-checkbox:checked').length;
@@ -327,7 +325,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Search functionality
     const searchInput = document.querySelector('.table-search');
     const tableRows = document.querySelectorAll('tbody tr');
     
@@ -344,7 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // City filter
     const cityFilter = document.getElementById('cityFilter');
     cityFilter.addEventListener('change', function() {
         const filterValue = this.value.toLowerCase();
