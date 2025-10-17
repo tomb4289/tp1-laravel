@@ -19,7 +19,7 @@ class StudentFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'address' => $this->faker->streetAddress(),
-            'phone_number' => $this->faker->numerify('(###) ###-####'),
+            'phone_number' => '(' . $this->faker->numerify('###') . ') ' . $this->faker->numerify('###-####'),
             'email' => $this->faker->unique()->safeEmail(),
             'date_of_birth' => $this->faker->dateTimeBetween('-30 years', '-18 years')->format('Y-m-d'),
             'city_id' => \App\Models\City::inRandomOrder()->first()->id,
