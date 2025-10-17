@@ -104,6 +104,8 @@
                                        name="phone_number" 
                                        value="{{ old('phone_number', $student->phone_number) }}" 
                                        placeholder="(123) 456-7890"
+                                       pattern="^\(\d{3}\) \d{3}-\d{4}$"
+                                       title="Canadian phone format: (123) 456-7890"
                                        required>
                                 @error('phone_number')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -115,7 +117,7 @@
                                        class="form-control @error('date_of_birth') is-invalid @enderror" 
                                        id="date_of_birth" 
                                        name="date_of_birth" 
-                                       value="{{ old('date_of_birth', $student->date_of_birth) }}" 
+                                       value="{{ old('date_of_birth', $student->date_of_birth->format('Y-m-d')) }}" 
                                        max="{{ date('Y-m-d', strtotime('-18 years')) }}"
                                        required>
                                 @error('date_of_birth')
@@ -264,7 +266,7 @@
                         </li>
                         <li class="mb-2">
                             <i class="bi bi-info-circle text-info me-2"></i>
-                            <strong>Phone:</strong> Include area code and proper formatting
+                            <strong>Phone:</strong> Canadian format: (123) 456-7890
                         </li>
                         <li class="mb-2">
                             <i class="bi bi-info-circle text-info me-2"></i>

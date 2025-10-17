@@ -96,6 +96,8 @@
                                        name="phone_number" 
                                        value="{{ old('phone_number') }}" 
                                        placeholder="(123) 456-7890"
+                                       pattern="^\(\d{3}\) \d{3}-\d{4}$"
+                                       title="Canadian phone format: (123) 456-7890"
                                        required>
                                 @error('phone_number')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -212,7 +214,7 @@
                         </li>
                         <li class="mb-2">
                             <i class="bi bi-check-circle text-success me-2"></i>
-                            <strong>Phone:</strong> Include area code and proper formatting
+                            <strong>Phone:</strong> Canadian format: (123) 456-7890
                         </li>
                         <li class="mb-2">
                             <i class="bi bi-check-circle text-success me-2"></i>

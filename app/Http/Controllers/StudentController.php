@@ -36,10 +36,12 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:500',
-            'phone_number' => 'required|string|max:20',
+            'phone_number' => 'required|string|regex:/^\(\d{3}\) \d{3}-\d{4}$/',
             'email' => 'required|email|unique:students,email',
             'date_of_birth' => 'required|date|before:today',
             'city_id' => 'required|exists:cities,id'
+        ], [
+            'phone_number.regex' => 'Phone number must be in Canadian format: (123) 456-7890'
         ]);
 
         Student::create($request->all());
@@ -74,10 +76,12 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:500',
-            'phone_number' => 'required|string|max:20',
+            'phone_number' => 'required|string|regex:/^\(\d{3}\) \d{3}-\d{4}$/',
             'email' => 'required|email|unique:students,email,' . $student->id,
             'date_of_birth' => 'required|date|before:today',
             'city_id' => 'required|exists:cities,id'
+        ], [
+            'phone_number.regex' => 'Phone number must be in Canadian format: (123) 456-7890'
         ]);
 
         $student->update($request->all());
